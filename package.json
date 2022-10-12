@@ -1,0 +1,53 @@
+{
+  "name": "stealth-assignment",
+  "version": "1.0.0",
+  "description": "Stealth Backend Assignment",
+  "main": "index.js",
+  "scripts": {
+    "deletetables": "npx sequelize db:migrate:undo:all",
+    "inserttables": "npx sequelize db:seed:all",
+    "createtables": "npx sequelize db:migrate",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=production npx babel-node ./src/index.js",
+    "start:dev": "nodemon --exec ./node_modules/.bin/babel-node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/key-joshua/stealth-assignment"
+  },
+  "keywords": [
+    "Assigment"
+  ],
+  "author": "Josue",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/register": "^7.18.9",
+    "babel-loader": "^8.2.5",
+    "babel-node": "^0.0.1-security",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http-status": "^1.5.3",
+    "joi": "^17.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.8.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^1.3.3"
+  }
+}
