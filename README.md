@@ -1,3 +1,8 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/08d9a491857b1935000e/maintainability)](https://codeclimate.com/github/key-joshua/neotechsolutions-backend-assignment/maintainability)
+[![CircleCI](https://circleci.com/gh/key-joshua/neotechsolutions-backend-assignment/tree/develop.svg?style=svg)](https://circleci.com/gh/key-joshua/neotechsolutions-backend-assignment/tree/develop)
+[![Coverage Status](https://coveralls.io/repos/github/key-joshua/neotechsolutions-backend-assignment/badge.svg?branch=develop)](https://coveralls.io/github/key-joshua/neotechsolutions-backend-assignment?branch=develop)
+[![codecov](https://codecov.io/gh/key-joshua/neotechsolutions-backend-assignment/branch/develop/graph/badge.svg?token=7ZU0CSQJQD)](https://codecov.io/gh/key-joshua/neotechsolutions-backend-assignment)
+
 # BACKEND CHALLEGE
 
 - This Backend Challenge
@@ -14,13 +19,19 @@ https://github.com/key-joshua/stealth-assignment
 
 ## Features
 
-- Create a user account.
+- Register a user account.
 - Verify a user account.
 - Resend a verification link.
-- login a user into verified account.
-- Etc ...
+- Login a user into verified account.
+- Logout a user.
+- Add a movie.
+- View a movie.
+- View all movies.
+- View favorite movies.
+- Edit a movie.
+- Delete a movie.
 
-## Test Ksdac llp APIs
+## Backend Assignment APIs
 
 Before we get started Remember to take  :coffee:   :pizza:  and :dancer:   When You Are coding, come on Dude it all about relax
 
@@ -36,13 +47,19 @@ Before we get started Remember to take  :coffee:   :pizza:  and :dancer:   When 
 - Version API using URL versioning starting with http://localhost:3000/api/v1  
 
 
-|NO  | VERBS  | ENDPOINTS                            | STATUS       | ACCESS      | DESCRIPTION                                |
-|----|--------|--------------------------------------|--------------|-------------|--------------------------------------------|
-| 1  | POST   | /api/auth/register-user              | 201 CREATED  | private     | create a user with email and password      |
-| 2  | POST   | /api/auth/verify-user-account        | 200 OK       | public      | verify user account through emailed link   |
-| 3  | POST   | /api/auth/resend-verification-link   | 200 OK       | public      | resend link through user email             |
-| 4  | POST   | /api/auth/login-user                 | 200 OK       | public      | login a user with email and password       |
-| 5  | Etc    | .....................                | ......       | ......      | ......................................     |
+|NO  | VERBS  |                    ENDPOINTS                       |    STATUS    |   ACCESS |              DESCRIPTION                     |
+|----|--------|----------------------------------------------------|--------------|----------|----------------------------------------------|
+| 1  | POST   | /auth/register-user                                | 201 CREATED  | public   | create a user with email and password        |
+| 2  | GET    | /auth//verify-user-account/:session                | 200 OK       | private  | verify user account through emailed link     |
+| 3  | GET    | /auth/resend-verification-link/:action/:yourEmail  | 200 OK       | public   | resend link through user email               |
+| 4  | POST   | /auth/login-user                                   | 200 OK       | public   | login a user with email and password         |
+| 4  | GET    | /auth/logout-user                                  | 200 OK       | public   | logout a user with session                   |
+| 4  | POST   | /movie/add-movie                                   | 201 OK       | private  | add movie with session in header             |
+| 4  | GET    | /movie/view-movie/:id                              | 200 OK       | private  | view movie with session in header            |
+| 4  | GET    | /movie/view-all-movies                             | 200 OK       | private  | view all movie with session in header        |
+| 4  | GET    | /movie/view-favorite-movies                        | 200 OK       | private  | view favorite movies with session in header  |
+| 4  | PATCH  | /movie/edit-movie/:id                              | 200 OK       | private  | edit movie with session in header            |
+| 4  | DELETE | /movie/delete-movie/:id                            | 200 OK       | private  | delete movie with session in header          |
 
 
 #### Other Tools

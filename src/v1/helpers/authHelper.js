@@ -39,7 +39,7 @@ class AuthHelper {
   }
 
   /**
-   * verify user account into users table in database.
+   * Verify user account into users table in database.
    * @param {string} id table attribute.
    * @returns {object} updated user details.
    */

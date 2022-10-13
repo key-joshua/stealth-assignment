@@ -3,10 +3,10 @@ import passwordHelper from '../../../v1/helpers/passwordHelper';
 const userOne = {
   createdAt: new Date(),
   updatedAt: new Date(),
-  name: 'Jose',
+  name: 'Josue',
   email: 'k.joshua855@gmail.com',
   password: passwordHelper.hashPassword('Qwerty@123'),
-  isVerified: false,
+  isVerified: true,
 };
 
 const userTwo = {

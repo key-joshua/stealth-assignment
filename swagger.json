@@ -1,0 +1,69 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Assignment for creating a movies server application with Node.js.",
+    "version": "1.0.0",
+    "title": "BACKEND ASSIGNMENT",
+    "termsOfService": "https://github.com/key-joshua/stealth-assignment/tree/develop/README.md ",
+    "contact": { "email": "k.joshua855@gmail.com" }
+  },
+
+  "hostLoc": "http://localhost:3000",
+  "host": "stealth-assignment.herokuapp.com",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Initial Route",
+      "description": "Initial/Fake Endpoint | GET Route"
+    },
+    
+    {
+      "name": "Auth Routes",
+      "description": "Authentication endpoitns | POST ROUTE, GET ROUTE, DELETE ROUTE"
+    },
+    
+    {
+      "name": "Movie Routes",
+      "description": "Movie endpoitns | POST ROUTE, GET ROUTE, DELETE ROUTE, PATCH ROUTE"
+    }
+  ],
+  
+  "schemes": ["http","https"],
+  "consumes": ["application/json", "none"],
+  "produces": [ "application/json", "none"],
+  "paths": {
+
+    "/kslowpamf": {
+      "get": {
+        "tags": [ "Initial Route"],
+        "summary": " (Handle Intial/Fake GET Route)",
+        "description": "By the use of initial/fake GET endpoint, you will be able to see welcome message ( Welcome To Heritage Apps )",
+        "responses": { "200": { "description": "Success. ( Welcome to Welcome To Heritage Apps )" }, "404": { "description": "Not Found." }}
+      }
+    }
+  },
+
+  "definitions": {
+    "User Table": {
+      "type": "object",
+      "properties": {
+        "name":  { "type": "string", "required": false },
+        "email":  { "type": "string", "required": true,"example": "your-email@gmailcom" },
+        "password":  { "type": "string", "required": true, "example": "Test@123" }
+      }
+    },
+
+    "Movie Table": {
+      "type": "object",
+      "properties": {
+        "name":  { "type": "string", "required": true },
+        "rating":  { "type": "number", "required": true },
+        "cast":  { "type": "array", "required": true },
+        "releaseDate":  { "type": "date", "required": true }
+      }
+    }
+  }
+}
+
+     

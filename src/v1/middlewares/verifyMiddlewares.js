@@ -45,6 +45,11 @@ const verifyLogin = async (req, res, next) => {
    */
 const verifySesion = async (req, res, next) => {
   try {
+    if (!req.headers.authorization) {
+      responseHelper.handleError(UNAUTHORIZED, 'Unauthorized');
+      return responseHelper.response(res);
+    }
+
     const verify = jwt.verify(req.headers.authorization.split(' ')[1], process.env.PROJECT_SECRET_KEY);
     if (verify.userId) {
       const userExist = await authHelper.userExist('id', verify.userId);
