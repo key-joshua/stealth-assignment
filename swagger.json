@@ -9,9 +9,9 @@
     "contact": { "email": "k.joshua855@gmail.com" }
   },
 
-  "hostLoc": "http://localhost:3000",
-  "host": "stealth-assignment.herokuapp.com",
-  "basePath": "/api",
+  "hostLoc": "localhost:3000",
+  "host": "heritage-backend-app.herokuapp.com",
+  "basePath": "/api/v1",
   "tags": [
     {
       "name": "Initial Route",
@@ -29,7 +29,7 @@
     }
   ],
   
-  "schemes": ["http","https"],
+  "schemes": ["https"],
   "consumes": ["application/json", "none"],
   "produces": [ "application/json", "none"],
   "paths": {
@@ -41,26 +41,307 @@
         "description": "By the use of initial/fake GET endpoint, you will be able to see welcome message ( Welcome To Heritage Apps )",
         "responses": { "200": { "description": "Success. ( Welcome to Welcome To Heritage Apps )" }, "404": { "description": "Not Found." }}
       }
+    },
+
+    "/auth/register-user": {
+      "post": {
+        "tags": [ "Auth Routes"],
+        "summary": " (Register User With POST Route)",
+        "description": "By the use of this POST endpoint, you will be able to register a user in our database",
+        "responses": { "201": { "description": "CREATED." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "Body Request",
+            "schema": { "$ref": "#/definitions/RegisterUser" }
+          }
+        ]
+      }
+    },
+
+    "/auth/login-user": {
+      "post": {
+        "tags": [ "Auth Routes"],
+        "summary": " (Login User With POST Route)",
+        "description": "By the use of this POST endpoint, you will be able to login a user account",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "type": "object",
+            "required": true,
+            "description": "Body Request",
+            "schema": { "$ref": "#/definitions/LoginUser" }
+          }
+        ]
+      }
+    },
+
+    "/auth/resend-verification-link/{action}/{yourEmail}": {
+      "get": {
+        "tags": [ "Auth Routes"],
+        "summary": " (Resend Verification Link With GET Route)",
+        "description": "By the use of this GET endpoint, you will be able to request a new verification link",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          { 
+            "in":"path",
+            "name": "action",
+            "type": "string",
+            "required": true,  
+            "description":"parsing an action such as 'verifyAccount' or 'resetPassword'"
+          },
+          { 
+            "in":"path",
+            "name": "yourEmail",
+            "type": "string",
+            "required": true,
+            "description":"parsing an email to receive verification link such as your-email@gmail.com"
+          }
+        ]
+      }
+    },
+
+    "/auth/verify-user-account/{session}": {
+      "get": {
+        "tags": [ "Auth Routes"],
+        "summary": " (Verify User Account With GET Route)",
+        "description": "By the use of this GET endpoint, you will be able to verify an account with verification link",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          { 
+            "in":"path",
+            "name": "session",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session, always session is token which follow this endpoint '/api/v1/auth/verify-user-account/{session}' find it in your email"
+          }
+        ]
+      }
+    },
+
+    "/auth/logout-user": {
+      "get": {
+        "tags": [ "Auth Routes"],
+        "summary": " (Logut User With GET Route)",
+        "description": "By the use of this GET endpoint, you will be able to logout a user",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session/token in the hearder authorization with Bearer Session. Ex: ( Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6Me )"
+          }
+        ],
+        "security": [ { "bearerAuth": [] } ]
+      }
+    },
+    
+    "/movie/view-all-movies": {
+      "get": {
+        "tags": [ "Movie Routes"],
+        "summary": " (View All Movies With GET Route)",
+        "description": "By the use of this GET endpoint, you will be able to view all the movies",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session/token in the hearder authorization with Bearer Session. Ex: ( Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6Me )"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "description":"parsing a page number."
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "description":"parsing a limit number."
+          }
+        ],
+        "security": [ { "bearerAuth": [] } ]
+      }
+    },
+    
+    "/movie/view-favorite-movies": {
+      "get": {
+        "tags": [ "Movie Routes"],
+        "summary": " (View Favorite Movies With GET Route)",
+        "description": "By the use of this GET endpoint, you will be able to view favorite the movies",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session/token in the hearder authorization with Bearer Session. Ex: ( Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6Me )"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "description":"parsing a page number."
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "description":"parsing a limit number."
+          }
+        ],
+        "security": [ { "bearerAuth": [] } ]
+      }
+    },
+    
+    "/movie/view-movie/{id}": {
+      "get": {
+        "tags": [ "Movie Routes"],
+        "summary": " (View a Movie With GET Route)",
+        "description": "By the use of this GET endpoint, you will be able to view a single movie",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session/token in the hearder authorization with Bearer Session. Ex: ( Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6Me )"
+          },
+          { 
+            "in":"path",
+            "name": "id",
+            "type": "integer",
+            "required": true,  
+            "description":"parsing a movie id such as '1' or '2', etc..."
+          }
+        ],
+        "security": [ { "bearerAuth": [] } ]
+      }
+    },
+
+    "/movie/add-movie": {
+      "post": {
+        "tags": [ "Movie Routes"],
+        "summary": " (Add Movie With POST Route)",
+        "description": "By the use of this POST endpoint, you will be able to add a new movie in our database",
+        "responses": { "201": { "description": "CREATED." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session/token in the hearder authorization with Bearer Session. Ex: ( Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6Me )"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "Body Request",
+            "schema": { "$ref": "#/definitions/Movie" }
+          }
+        ],
+        "security": [ { "bearerAuth": [] } ]
+      }
+    },
+
+    "/movie/edit-movie/{id}": {
+      "patch": {
+        "tags": [ "Movie Routes"],
+        "summary": " (Edit Movie With PATCH Route)",
+        "description": "By the use of this PATCH endpoint, you will be able to edit a movie in our database",
+        "responses": { "201": { "description": "CREATED." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session/token in the hearder authorization with Bearer Session. Ex: ( Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6Me )"
+          },
+          { 
+            "in":"path",
+            "name": "id",
+            "type": "integer",
+            "required": true,  
+            "description":"parsing a movie id such as '1' or '2', etc..."
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "Body Request",
+            "schema": { "$ref": "#/definitions/Movie" }
+          }
+        ],
+        "security": [ { "bearerAuth": [] } ]
+      }
+    },
+    
+    "/movie/delete-movie/{id}": {
+      "delete": {
+        "tags": [ "Movie Routes"],
+        "summary": " (Delete a Movie With GET Route)",
+        "description": "By the use of this DELETE endpoint, you will be able to delete a single movie",
+        "responses": { "200": { "description": "OK." }, "400": { "description": "BAD_REQUEST." }},
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description":"parsing a session/token in the hearder authorization with Bearer Session. Ex: ( Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6Me )"
+          },
+          { 
+            "in":"path",
+            "name": "id",
+            "type": "integer",
+            "required": true,  
+            "description":"parsing a movie id such as '1' or '2', etc..."
+          }
+        ],
+        "security": [ { "bearerAuth": [] } ]
+      }
     }
   },
 
   "definitions": {
-    "User Table": {
+    "RegisterUser": {
       "type": "object",
       "properties": {
-        "name":  { "type": "string", "required": false },
-        "email":  { "type": "string", "required": true,"example": "your-email@gmailcom" },
+        "name":  { "type": "string", "required": false, "example": "Josue" },
+        "email":  { "type": "string", "required": true, "example": "your-email@gmail.com" },
+        "password":  { "type": "string", "required": true, "example": "Test@123" },
+        "confirmPassword":  { "type": "string", "required": true, "example": "Test@123" }
+      }
+    },
+
+    "LoginUser": {
+      "type": "object",
+      "properties": {
+        "email":  { "type": "string", "required": true, "example": "your-email@gmail.com" },
         "password":  { "type": "string", "required": true, "example": "Test@123" }
       }
     },
 
-    "Movie Table": {
+    "Movie": {
       "type": "object",
       "properties": {
-        "name":  { "type": "string", "required": true },
-        "rating":  { "type": "number", "required": true },
-        "cast":  { "type": "array", "required": true },
-        "releaseDate":  { "type": "date", "required": true }
+        "name":  { "type": "string", "example": "K.G.F Chapter" },
+        "rating":  { "type": "number", "example": "4.7" },
+        "cast":  { "type": "array", "example": [ "Vinay", "Anant"] },
+        "releaseDate":  { "type": "date", "example": "2018-12-21" }
       }
     }
   }
