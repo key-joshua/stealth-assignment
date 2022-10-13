@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "c5b1c659-624d-404b-9f50-8fa96e6605ac",
+		"name": "Stealth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23512770"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Key Joshua\",\r\n    \"email\": \"k.joshua855@gmail.com\",\r\n    \"password\": \"Qwerty@123\",\r\n    \"confirmPassword\": \"Qwerty@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/auth/register-user",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"k.joshua855@gmail.com\",\r\n    \"password\": \"Qwerty@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/auth/login-user",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resend Email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/auth/resend-verification-link/verifyAccount/k.joshua855@gmail.com",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"resend-verification-link",
+						"verifyAccount",
+						"k.joshua855@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Account",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/auth/verify-user-account/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY2NTYwMTQ2NX0.jxjPNdDgKj2r5QYyrFloBF3LT3cj-3S9lc_Lnrd7u8I",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"verify-user-account",
+						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY2NTYwMTQ2NX0.jxjPNdDgKj2r5QYyrFloBF3LT3cj-3S9lc_Lnrd7u8I"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTY2MDc2Nn0.pTNHat44sW2LZ4RLLvsq3AD8fvLzomJC709HU_RTfig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/auth/logout-user",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logout-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View All Movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTY2MDc2Nn0.pTNHat44sW2LZ4RLLvsq3AD8fvLzomJC709HU_RTfig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/movie/view-all-movies",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"view-all-movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Favorite Movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTY2MDc2Nn0.pTNHat44sW2LZ4RLLvsq3AD8fvLzomJC709HU_RTfig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/movie/view-favorite-movies?page=1&limit=1",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"view-favorite-movies"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Movie",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTY2MDc2Nn0.pTNHat44sW2LZ4RLLvsq3AD8fvLzomJC709HU_RTfig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dhoom 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/movie/view-movie/1",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"view-movie",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTY2MDc2Nn0.pTNHat44sW2LZ4RLLvsq3AD8fvLzomJC709HU_RTfig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dhoom\",\r\n    \"rating\": 4.5,\r\n    \"cast\": [\"Hrithik Roshan\", \"Esha Deol\", \"Abhishek Bachchan\", \"Rimi Sen\"],\r\n    \"releaseDate\": \"2004-08-27\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/movie/add-movie",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"add-movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTY2MDc2Nn0.pTNHat44sW2LZ4RLLvsq3AD8fvLzomJC709HU_RTfig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dhoom 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/movie/edit-movie/2",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"edit-movie",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTY2MDc2Nn0.pTNHat44sW2LZ4RLLvsq3AD8fvLzomJC709HU_RTfig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dhoom 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://heritage-backend-app.herokuapp.com/api/v1/movie/delete-movie/3",
+					"protocol": "https",
+					"host": [
+						"heritage-backend-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movie",
+						"delete-movie",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

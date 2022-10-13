@@ -12,7 +12,7 @@ dotenv.config();
 * saveSession function.
 * generateSession function.
 * decodeSession function.
-* destroySession function.
+* deleteSession function.
 */
 class SessionHelper {
   /**
@@ -43,12 +43,12 @@ class SessionHelper {
   }
 
   /**
-   * Destroy a session.
+   * Delete a session.
    * @param {string} attribute table column.
    * @param {string} value a user id.
    * @returns {string} a destroyed session.
    */
-  static async destroySession(attribute, value) {
+  static async deleteSession(attribute, value) {
     const data = await Session.destroy({ where: { [attribute]: value } });
     return data;
   }

@@ -4,12 +4,17 @@
   "description": "Stealth Backend Assignment",
   "main": "index.js",
   "scripts": {
-    "deletetables": "npx sequelize db:migrate:undo:all",
-    "inserttables": "npx sequelize db:seed:all",
-    "createtables": "npx sequelize db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=production npx babel-node ./src/index.js",
-    "start:dev": "nodemon --exec ./node_modules/.bin/babel-node ./src/index.js"
+    "start:dev": "nodemon --exec ./node_modules/.bin/babel-node ./src/index.js",
+
+    "deletetables": "cross-env npx sequelize db:migrate:undo:all",
+    "inserttables": "cross-env npx sequelize db:seed:all",
+    "createtables": "cross-env npx sequelize db:migrate",
+    
+    "deleteOnetable": "cross-env npx sequelize db:migrate:undo --name 20221210-create-session.js",
+    "createOnetable": "cross-env npx sequelize-cli db:migrate --to 20221210-create-session.js",
+    "insertOnetable": "cross-env npx sequelize db:seed --seed 20221210-demo-session.js"
   },
   "repository": {
     "type": "git",

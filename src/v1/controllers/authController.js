@@ -15,6 +15,7 @@ dotenv.config();
 * verifyAccount function.
 * resentVerificationLink function.
 * loginUser function.
+* logoutUser function.
 */
 class AuthController {
   /**
@@ -68,7 +69,7 @@ class AuthController {
       }
 
       data = await authHelper.verifyAccount(data.id);
-      await sessionHelper.destroySession('userId', data.id);
+      await sessionHelper.deleteSession('userId', data.id);
 
       const url = `${process.env.FRONTEND_URL}/login`;
       await emailService.sendSuccessfullyEmail(url, `${data.name || 'Unknown'}`, data.email);
@@ -163,7 +164,7 @@ class AuthController {
      */
   static async logoutUser(req, res) {
     try {
-      await sessionHelper.destroySession('userId', req.user.id);
+      await sessionHelper.deleteSession('userId', req.user.id);
       responseHelper.handleSuccess(OK, 'Success');
       return responseHelper.response(res);
     } catch (error) {

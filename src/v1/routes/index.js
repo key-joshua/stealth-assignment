@@ -1,7 +1,9 @@
 import Router from 'express';
-import authRoute from './authRoute';
+import authRouter from './authRoute';
+import movieRouter from './movieRoute';
 
 const router = Router();
-router.use('/auth', authRoute);
+router.use('/auth', authRouter);
+router.use('/movie', movieRouter);
 
 export default router;

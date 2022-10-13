@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       as: 'Session',
       onDelete: 'CASCADE',
     });
+
+    User.hasMany(models.Movie, {
+      foreignKey: 'userId',
+      as: 'Movie',
+      onDelete: 'CASCADE',
+    });
   };
 
   return User;
